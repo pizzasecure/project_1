@@ -1,0 +1,9 @@
+- task: Test
+inputs:
+targetType: 'inline'
+script: |
+    SONARQUBE_URL=https://my-sonarqube.example.com/api/qualitygates/project_status?
+    projectKey=project_test
+    SONARQUBE_TOKEN="a1ab17589789b5f298ca56df04d16633e7e52439"
+    EXPECTED_STATUS="FAILED"
+    response=$(curl -s -u "$SONARQUBE_TOKEN:""$SONARQUBE_URL")
